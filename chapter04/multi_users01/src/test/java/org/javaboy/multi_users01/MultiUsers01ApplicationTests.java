@@ -1,0 +1,13 @@
+package org.javaboy.multi_users01;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class MultiUsers01ApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
