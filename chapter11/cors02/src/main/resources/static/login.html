@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<input type="text" value="javaboy" id="username">
+<input type="text" value="123" id="password">
+<hr>
+
+<input type="button" value="put" id="put">
+<input type="button" value="get" id="get">
+
+<script>
+
+    $("#get").click(function () {
+        $.ajax({
+            url: 'http://localhost:8080/get',
+            type: 'get',
+            headers: {
+                "Authorization": "Basic " + btoa($("#username").val() + ":" + $("#password").val())
+            },
+            success: function (data) {
+                $("#app").html(data);
+            }
+        })
+    })
+
+    $("#put").click(function () {
+        $.ajax({
+            url: 'http://localhost:8080/put',
+            type: 'put',
+            headers: {
+                "Authorization": "Basic " + btoa($("#username").val() + ":" + $("#password").val())
+            },
+            success: function (data) {
+                $("#app").html(data);
+            }
+        })
+    })
+</script>
+</body>
+</html>

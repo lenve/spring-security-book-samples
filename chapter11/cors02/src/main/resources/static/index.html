@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<input type="button" value="post" id="post">
+<input type="button" value="put" id="put">
+<input type="button" value="get" id="get">
+<script>
+    $("#get").click(function () {
+        $.get("http://localhost:8080/get", function (data) {
+            $("#app").html(data);
+        })
+    })
+    $("#post").click(function () {
+        $.post("http://localhost:8080/post", function (data) {
+            $("#app").html(data);
+        })
+    })
+    $("#put").click(function () {
+        $.ajax({
+            url: 'http://localhost:8080/put',
+            type: 'put',
+            success: function (data) {
+                $("#app").html(data);
+            }
+        })
+    })
+</script>
+</body>
+</html>
