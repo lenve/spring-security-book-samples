@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>授权模式 DEMO</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">请选择一种授权模式</h3>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a th:href="@{/authorize?grant_type=authorization_code}"><span style="font-size:medium">授权码模式</span></a>
+            </li>
+            <li class="list-group-item">
+                <a th:href="@{/authorize?grant_type=client_credentials}"><span style="font-size:medium">客户端模式</span></a>
+            </li>
+            <li class="list-group-item">
+                <div>
+                    <p style="font-size:medium">密码模式</p>
+                    <form th:action="@{/authorize}" method="post">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="username" style="font-size:small">用户名</label>
+                                <input type="text" id="username" name="username" value="javaboy" class="form-control input-sm">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="password" style="font-size:small">密码</label>
+                                <input type="password" id="password" name="password" value="123" class="form-control input-sm">
+                            </div>
+                        </div>
+                        <input type="hidden" id="grant_type" name="grant_type" value="password">
+                        <button type="submit" class="btn btn-primary btn-sm">授权</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+        <div th:if="${msg}" class="panel-footer">
+            <div th:text="${msg}"></div>
+        </div>
+    </div>
+</div>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>

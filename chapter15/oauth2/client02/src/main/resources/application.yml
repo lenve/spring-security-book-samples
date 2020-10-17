@@ -1,0 +1,30 @@
+server:
+  port: 8883
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          auth-code:
+            provider: javaboy
+            client-id: my_client
+            client-secret: 123
+            authorization-grant-type: authorization_code
+            redirect-uri: http://client.javaboy.org:8883/login/oauth2/code/javaboy
+            scope: read:msg
+          client-creds:
+            provider: javaboy
+            client-id: my_client
+            client-secret: 123
+            authorization-grant-type: client_credentials
+            scope: read:msg
+          password:
+            provider: javaboy
+            client-id: my_client
+            client-secret: 123
+            authorization-grant-type: password
+            scope: read:msg
+        provider:
+          javaboy:
+            authorization-uri: http://auth.javaboy.org:8881/oauth/authorize
+            token-uri: http://auth.javaboy.org:8881/oauth/token

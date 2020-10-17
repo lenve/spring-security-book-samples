@@ -1,0 +1,10 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaque:
+          introspection-uri: http://auth.javaboy.org:8881/oauth/check_token
+          introspection-client-id: my_client
+          introspection-client-secret: 123
+server:
+  port: 8882
