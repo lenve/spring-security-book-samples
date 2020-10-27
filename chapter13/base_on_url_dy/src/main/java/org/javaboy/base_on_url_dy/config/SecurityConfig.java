@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     @Override
                     public <O extends FilterSecurityInterceptor> O postProcess(O object) {
                         object.setSecurityMetadataSource(customSecurityMetadataSource);
-                        object.setRejectPublicInvocations(false);
+                        object.setRejectPublicInvocations(true);
                         return object;
                     }
                 });

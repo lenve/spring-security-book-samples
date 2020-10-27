@@ -34,14 +34,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     @Bean
-    protected AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager();
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     @Bean
     LoginFilter loginFilter() throws Exception {
         LoginFilter loginFilter = new LoginFilter();
-        loginFilter.setAuthenticationManager(authenticationManager());
+        loginFilter.setAuthenticationManager(authenticationManagerBean());
         loginFilter.setAuthenticationSuccessHandler((req, resp, auth) -> {
             resp.setContentType("application/json;charset=utf-8");
             PrintWriter out = resp.getWriter();
