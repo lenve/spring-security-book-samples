@@ -59,8 +59,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     response.getWriter().print(s);
                     response.flushBuffer();
                 });
-        http.sessionManagement()
-                .sessionFixation().newSession()
     }
 
     @Bean
